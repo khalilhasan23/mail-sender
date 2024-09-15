@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect, useState } from 'react';
-import TodoComponent  from '../../components/Todo';
+// import TodoComponent  from '../../components/Todo';
 import { createTodo, getTodos } from '../../services/todoService';
 import { Todo } from '../../types/todo';
 

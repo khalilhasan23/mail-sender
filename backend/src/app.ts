@@ -12,12 +12,9 @@ connectDB();
 const app = express();
 
 app.use(cors());
-// app.use(cors({
-//     origin: 'http://localhost:3000' // or your frontend URL
-//  }));
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
-app.use('/api/todos', todoRoutes); //todo change it to fit your web applicaton
+app.use('/api/sendMail', todoRoutes); 
 
 export default app;

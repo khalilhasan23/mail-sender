@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { sendMail } from '../../services/todoService';
+import { sendMail } from '../../services/mailSenderService';
 import styles from "./page.module.css";
 import Nav from "@/components/nav";
 import { CCol, CContainer, CImage, CRow } from "@coreui/react";

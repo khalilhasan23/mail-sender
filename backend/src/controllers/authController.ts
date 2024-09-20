@@ -1,18 +1,18 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import User from '../models/User';
+import UserForEmailSender from '../models/UserForEmailSender';
 
 const register = async (req: Request, res: Response) => {
-  const { username, email, password } = req.body;
+  const { appPassword, email, password } = req.body;
   try {
-    const existingUser = await User.findOne({ email });
+    const existingUser = await UserForEmailSender.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: 'User already exists' });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({ username, email, password: hashedPassword });
+    const user = new UserForEmailSender({ appPassword, email, password: hashedPassword });
 
     await user.save();
 
@@ -29,7 +29,7 @@ const register = async (req: Request, res: Response) => {
 const login = async (req: Request, res: Response) => {
   const { email, password } = req.body;
   try {
-    const user = await User.findOne({ email });
+    const user = await UserForEmailSender.findOne({ email });
     if (!user) {
       return res.status(400).json({ message: 'Invalid credentials' });
     }

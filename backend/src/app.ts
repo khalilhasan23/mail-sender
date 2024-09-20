@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import connectDB from './config/db';
 import authRoutes from './routes/authRoutes';
-import todoRoutes from './routes/todoRoutes';
+import todoRoutes from './routes/emailSenderRoutes';
 
 dotenv.config();
 connectDB();

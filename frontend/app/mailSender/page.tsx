@@ -13,6 +13,7 @@ const Todos: React.FC = () => {
   const [subject, setSubject] = useState('');
   const [toEmail, setEmail] = useState('');
   const [massageText, setmassageText] = useState('');
+  const [isSended, setIsSended] = useState('');
   const router = useRouter();
 
   const buttenNames = {
@@ -34,10 +35,11 @@ const Todos: React.FC = () => {
     e.preventDefault();
     const token = localStorage.getItem('token');
     if (token) {
-      await sendMail(massageText, toEmail, subject, token);
+      const respons = await sendMail(massageText, toEmail, subject, token);
       setmassageText('');
       setSubject('');
       setEmail('');
+      setIsSended(respons.message)
     }
   };
 
@@ -79,9 +81,17 @@ const Todos: React.FC = () => {
                 <FontAwesomeIcon icon={faPaperclip} size="xl" style={{color: "#22577a", cursor: 'pointer'}} />
               </div>
               <div className="justify-content-end" style={{display: 'flex'}}>
-                <button type="submit" className='navLink mt-3'>Register</button>
+                <button type="submit" className='navLink mt-3'>Send</button>
               </div>
             </form>
+          </CCol>
+        </CRow>
+        <CRow>
+          <CCol className="mt-5">
+            <div className="justify-content-center" style={{display: 'flex', color: 'black'}}>
+              {isSended === 'Email sended' ? (<p style={{ backgroundColor: '#57CC99', padding: '19px', borderRadius: '13px' }}>Email sended</p>)
+                : isSended === 'Server error'  ? (<p style={{ backgroundColor: 'red', padding: '19px', borderRadius: '13px' }}>Failed sending Email</p>): (<p></p>)}
+            </div>
           </CCol>
         </CRow>
       </CContainer>

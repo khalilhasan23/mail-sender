@@ -1,13 +1,13 @@
 import request from 'supertest';
 import app from '../src/app';
-import User from '../src/models/User';
+import UserForEmailSender from '../src/models/UserForEmailSender';
 
 describe('Auth API', () => {
     it('should register a new user', async () => {
         const res = await request(app)
         .post('/api/auth/register')
         .send({
-            username: 'kawa',
+            appPasword: 'kawa',
             email: 'test@kawa.de',
             password: '123',
         });
@@ -15,8 +15,8 @@ describe('Auth API', () => {
         expect(res.statusCode).toEqual(201);
         expect(res.body).toHaveProperty('token');
 
-        const user = await User.findOne({ email: 'test@kawa.de' });
+        const user = await UserForEmailSender.findOne({ email: 'test@kawa.de' });
         expect(user).toBeTruthy();
-        expect(user!.username).toBe('kawa');
+        expect(user!.appPassword).toBe('kawa');
     });
 });

@@ -1,9 +1,9 @@
 import { Router } from 'express';
-//import { createTodo, getTodos } from '../controllers/todoController';
+import { sendMail } from '../controllers/emailSenderController';
 import authMiddleware from '../middlewares/authMiddleware';
 
 const router = Router();
 
-router.post('/', authMiddleware, /*todo*/); 
+router.post('/', authMiddleware, sendMail); 
 
 export default router;

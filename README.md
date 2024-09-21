@@ -13,14 +13,9 @@ This is a web application built with the MERN stack (MongoDB, Express, React, an
 
 ## Screenshots
 
-1. **Registration Page**:
-   ![Registration Page](./screenshots/registration.png)
+![Pages](https://github.com/khalilhasan23/mail-sender/blob/main/Screenshots/Screenshots.PNG)
 
-2. **Login Page**:
-   ![Login Page](./screenshots/login.png)
 
-3. **Send Email Page**:
-   ![Send Email Page](./screenshots/send-email.png)
 
 ## Tech Stack
 
